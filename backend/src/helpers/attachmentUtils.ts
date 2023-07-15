@@ -14,9 +14,10 @@ export class AttachmentUtils {
     this.s3 = new XAWS.S3({ signatureVersion: 'v4' })
   }
 
-  getAttachmentUrl(todoId: string){
-    logger.info('get attachment url',todoId)
-    return `https://${this.bucketName}.s3.amazonaws.com/${todoId}`
+  getAttachmentUrl(todoId: string): string {
+    logger.info('get attachment url', todoId)
+    // Be implemented later
+    return ""
   }
 
   public async createAttachmentPresignedUrl(attachmentId: string): Promise<string> {
