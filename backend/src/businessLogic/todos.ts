@@ -10,7 +10,7 @@ const todoAccessLayer = new TodosAccess()
 const attachmentUtil = new AttachmentUtils()
 
 export const createTodo = async (request: CreateTodoRequest, userId: string) => {
-  logger.info("BL: Create")
+  logger.info("Create todo")
 
   if (request) {
     logger.info("Adding a new")
@@ -32,21 +32,21 @@ export const createTodo = async (request: CreateTodoRequest, userId: string) => 
 
 export const createAttachmentPresignedUrl = async (userId, todoId) => {
   const attachmentId = uuid.v4()
-  logger.info("Create attachment presigned url ")
+  logger.info("Create attachment presigned url")
   return await todoAccessLayer.createAttachmentPresignedUrl(userId, todoId, attachmentId)
 }
 
 export const getTodosForUser = async (userId: string) => {
-  logger.info(" Get todos ")
+  logger.info("Get todos")
   return await todoAccessLayer.getTodos(userId)
 }
 
 export const updateTodo = async (userId: string, todoId: string, request: UpdateTodoRequest) => {
-  logger.info(" Update todos ")
+  logger.info("Update todos")
   await todoAccessLayer.updateTodo(userId, todoId, request)
 }
 
 export const deleteTodo = async (userId: string, todoId: string) => {
-  logger.info(" Delete todos ")
+  logger.info("Delete todos")
   await todoAccessLayer.deleteTodo(userId, todoId)
 }

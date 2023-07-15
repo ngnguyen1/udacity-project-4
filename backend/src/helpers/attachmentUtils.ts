@@ -21,9 +21,9 @@ export class AttachmentUtils {
 
   public async createAttachmentPresignedUrl(attachmentId: string): Promise<string> {
     return this.s3.getSignedUrl('putObject', {
-        Bucket: this.bucketName,
-        Key: attachmentId,
-        Expires: this.expires
-    }) as string;
+      Bucket: this.bucketName,
+      Key: attachmentId,
+      Expires: this.expires
+    }) as string
   }
 }
