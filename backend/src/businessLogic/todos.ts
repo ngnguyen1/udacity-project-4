@@ -1,5 +1,4 @@
 import { TodosAccess } from '../dataLayer/todosAcess'
-import { AttachmentUtils } from '../helpers/attachmentUtils'
 import { CreateTodoRequest } from '../requests/CreateTodoRequest'
 import { UpdateTodoRequest } from '../requests/UpdateTodoRequest'
 import { createLogger } from '../utils/logger'
@@ -7,7 +6,6 @@ import * as uuid from 'uuid'
 
 const logger = createLogger("TodosAccess")
 const todoAccessLayer = new TodosAccess()
-const attachmentUtil = new AttachmentUtils()
 
 export const createTodo = async (request: CreateTodoRequest, userId: string) => {
   logger.info("Create todo")
@@ -16,13 +14,11 @@ export const createTodo = async (request: CreateTodoRequest, userId: string) => 
     logger.info("Adding a new")
     const todoId = uuid.v4()
     const createdAt = new Date().toISOString()
-    const s3Attach = attachmentUtil.getAttachmentUrl(todoId)
     return await todoAccessLayer.createTodo({
       userId: userId,
       todoId: todoId,
       createdAt,
       done: false,
-      attachmentUrl: s3Attach,
       ...request
     });
   } else {
