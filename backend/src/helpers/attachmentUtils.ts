@@ -15,6 +15,7 @@ export class AttachmentUtils {
   }
 
   public async createAttachmentPresignedUrl(attachmentId: string): Promise<string> {
+    logger.info('create attachment presigned URL - ', attachmentId)
     return this.s3.getSignedUrl('putObject', {
       Bucket: this.bucketName,
       Key: attachmentId,
